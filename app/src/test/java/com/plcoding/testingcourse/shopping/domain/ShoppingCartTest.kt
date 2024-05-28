@@ -58,4 +58,23 @@ internal class ShoppingCartTest {
             cart.addProduct(product, -5)
         }
     }
+
+    @Test
+    fun `isValidProduct returns invalid for not existing product`() {
+        //arrange
+        //create a product that id is not valid
+        val product = Product(
+            id = 123456,
+            name = "ice cream",
+            price = 5.0
+        )
+        cart.addProduct(product, 5)
+
+        //action
+        val priceSum = cart.getTotalCost()
+
+        //assert
+        //assert that the total cost is 0 because the product is not valid
+        assertThat(2).isEqualTo(0.0)
+    }
 }
